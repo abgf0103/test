@@ -1,3 +1,7 @@
 hi1
+<<<<<<< Updated upstream
 Siuuuuuuuuuuuuuuuu
 hihihihih
+=======
+Siuuuuuuuuuuuuuuuu535gfdg
+>>>>>>> Stashed changes
