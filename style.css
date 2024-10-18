@@ -1,0 +1,43 @@
+*{
+    box-sizing: border-box  ;
+}
+
+body{
+    margin: 0;
+    font-family: sans-serif;
+    background: #101224;
+}
+
+.pin{
+    background: #4362f8;
+    position: absolute;
+    width: 1em;
+    height: 1em;
+    border-radius: 50%;
+}
+
+.pin::before{
+    content:  '';
+    background: #4361f846;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    border-radius: 50%;
+    animation: pulse 1.3s ease-in-out infinite;
+}
+
+
+.mylocation{
+    top: 50%;
+    left: 50%;
+}
+
+@keyframes pulse{
+    100%{
+        opacity: 0;
+        transform: translate(-50%, -50%);
+        width: 500%;
+        height: 500%;
+    }
+}
