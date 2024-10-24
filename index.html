@@ -9,9 +9,16 @@
 <body>
     <div class="pin mylocation">
     </div>
-    <div>
-        <div></div>
+    <button class="getSize">눌러봐</button>
+    <div style="width: 300px; height: 200px; background-color: wheat;" class="ddiv">
     </div>
-    <script src="script.js"></script>
 </body>
+<script>
+    const elem = document.querySelector(".classname");
+    const elemWidth = elem.offsetWidth;
+    const elemHeight = elem.offsetHeight;
+    document.querySelector(".getSize").addEventListener('click', () =>{
+        console.log(`현재 width : ${elemWidth}px, 현재 height : ${elemHeight}px`);
+    })
+</script>
 </html>

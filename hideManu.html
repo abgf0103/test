@@ -1,0 +1,81 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <link rel="stylesheet" href="/font-awesome-4.7.0/css/font-awesome.min.css">
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>검색창 숨기기/펼치기</title>
+    <style>
+        .search-container {
+            position: fixed;
+            top: 20px;
+            left: 20px;
+            width: 400px;
+            transition: top 0.5s ease-in-out, background-color 500ms linear;
+            background: blue;
+        }
+
+        .hidden {
+            position: absolute;
+            top: 100%; /* search-container의 바로 아래에 위치 */
+            left: 50%; /* 중앙에 위치 */
+            transform: translateX(-50%); /* 정확히 중앙에 오도록 조정 */
+        }
+
+        .hiddenBtn {
+            background: black;
+            color: white;
+            width: 50px;
+            height: 50px;
+            text-align: center; /* 중앙 정렬 */
+            line-height: 50px; /* 수직 중앙 정렬 */
+        }
+    </style>
+</head>
+<body>
+    <div class="search-container">
+        <ul id="resultList" class="resultList">
+            <li>Item 1</li>
+            <li>Item 2</li>
+            <li>Item 3</li>
+            <li>Item 4</li>
+            <li>Item 5</li>
+        </ul>   
+        <div class="hidden">
+            <a class="hiddenBtn" href="#">
+                <i class="fa fa-angle-up" aria-hidden="true"></i>
+            </a>
+        </div>
+    </div>  
+
+<script>
+    document.addEventListener("DOMContentLoaded", function() {
+        // .hiddenBtn 클릭 시 search-container 위치를 위로 이동해 숨김
+        const btnSearch = document.querySelector(".hiddenBtn");
+        const searchContainer = document.querySelector(".search-container");
+        const icon = btnSearch.querySelector('i'); // 아이콘 요소 선택
+        
+        let isFormVisible = true;
+
+        btnSearch.addEventListener("click", function(event) {
+            event.preventDefault(); // 버튼 기본 동작 방지
+            const searchHeight = searchContainer.clientHeight;
+            
+            if (isFormVisible) {
+                // 검색창을 화면 밖으로 위로 올려서 숨기기
+                searchContainer.style.top = `-${searchHeight}px`;  // 위로 숨김
+                icon.classList.remove('fa-angle-up'); // 아이콘 변경
+                icon.classList.add('fa-angle-down');
+            } else {
+                // 검색창을 원래 위치로 내려서 보이기
+                searchContainer.style.top = "20px";      // 다시 보임
+                icon.classList.remove('fa-angle-down'); // 아이콘 변경
+                icon.classList.add('fa-angle-up');
+            }
+            isFormVisible = !isFormVisible;
+        });
+    });
+</script>
+
+</body>
+</html>
